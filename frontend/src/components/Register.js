@@ -8,21 +8,21 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [confPassword, setConfPassword] = useState('');
   const [msg, setMsg] = useState('')
-  const history = useNavigate()
+  const navigate = useNavigate()
 
   const Register = async (e) => {
     e.preventDefault()
     try{
-      await axios.post('http://localhost/5000/users', {
+      await axios.post('http://localhost:5000/users', {
         name: name,
         email: email,
         password: password,
         confPassword: confPassword
-      })
-      history.push("/")
+      });
+      navigate("/")
     }catch (e) {
       if (e.response){
-        console.log(e.response.data)
+        setMsg(e.response.data.msg)
       }
     }
   }
@@ -34,6 +34,7 @@ const Register = () => {
           <div className="columns is-centered">
             <div className="column is-4-desktop">
               <form onSubmit={Register} className="box">
+                <p className="has-text-centered">{msg}</p>
                 <div className="field mt-5">
                   <label className="label">Name</label>
                   <div className="controls">

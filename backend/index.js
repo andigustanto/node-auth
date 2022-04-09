@@ -21,18 +21,7 @@ try {
     console.error(error);
 }
 
-// app.use(cors({
-//     credential: true,
-//     origin: 'http://localhost:3000',
-// }));
-
-app.use(cors({
-    origin: 'http://localhost:3000',
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credential: true,
-    optionsSuccessStatus: 200,
-    preflightContinue: true
-}));
+app.use(cors({ credentials:true, origin:'http://localhost:3000' }));
 
 app.use(cookieParser());
 app.use(express.json());
