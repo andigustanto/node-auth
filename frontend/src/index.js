@@ -4,7 +4,7 @@ import App from './App';
 import "bulma/css/bulma.css";
 import axios from "axios";
 
-axios.default.withCredentials = true;
+axios.defaults.withCredentials = true;
 
 ReactDOM.render(
   <React.StrictMode>
