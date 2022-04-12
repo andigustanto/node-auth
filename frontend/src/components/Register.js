@@ -46,13 +46,14 @@ const Register = () => {
           <div className="columns is-centered">
             <div className="column is-4-desktop">
               <form onSubmit={Register} className="box">
-                <p className="has-text-centered">{msg}</p>
+                <p className="has-text-centered has-text-danger">{msg}</p>
                 <div className="field mt-5">
                   <label className="label">Name</label>
                   <div className="controls">
                     <input type="text" className="input" placeholder="Name"
                            value={name}
                            onChange={(e) => setName(e.target.value)}
+                           required={true}
                     />
                   </div>
                 </div>
@@ -62,6 +63,7 @@ const Register = () => {
                     <input type="text" className="input" placeholder="Email"
                            value={email}
                            onChange={(e) => setEmail(e.target.value)}
+                           required={true}
                     />
                   </div>
                 </div>
@@ -71,6 +73,7 @@ const Register = () => {
                     <input type="password" className="input" placeholder="*******"
                            value={password}
                            onChange={(e) => setPassword(e.target.value)}
+                           required={true}
                     />
                   </div>
                 </div>
@@ -80,12 +83,14 @@ const Register = () => {
                     <input type="password" className="input" placeholder="*******"
                            value={confPassword}
                            onChange={(e) => setConfPassword(e.target.value)}
+                           required={true}
                     />
                   </div>
                 </div>
                 <div className="field mt-5">
                   <button className="button is-success is-fullwidth">Register</button>
                 </div>
+                <p className="has-text-centered mt-3" >Already have an account? <a href="/">Login</a></p>
               </form>
             </div>
           </div>

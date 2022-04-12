@@ -16,6 +16,7 @@ export const getUsers = async(req, res) => {
 export const Register = async (req, res) => {
     const {name, email, password, confPassword} = req.body;
     if(password !== confPassword) return res.status(400).json({msg: "Password tidak match!"});
+    if(!name || !email || !password || !confPassword) return res.status(400).json({msg: "Fields cannot be empty!"});
     const salt = await bcrypt.genSalt();
     const hashPassword = await bcrypt.hash(password, salt);
 
@@ -47,6 +48,7 @@ export const Register = async (req, res) => {
 
 export const Login = async (req, res) => {
     try {
+      console.log(req.body)
         const user = await Users.findAll({
             where:{
                 email: req.body.email
