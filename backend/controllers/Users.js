@@ -20,12 +20,26 @@ export const Register = async (req, res) => {
     const hashPassword = await bcrypt.hash(password, salt);
 
     try {
-        await Users.create({
-            name: name,
-            email: email,
-            password: hashPassword
-        });
-        res.json({msg: "Register Success!"});
+      const checkAvailability = await Users.count({
+        where:{
+          email: req.body.email
+        }
+      })
+
+      if (checkAvailability > 0) return res.status(400).json({
+        state: false,
+        msg: "Email sudah terdaftar!"
+      });
+
+      await Users.create({
+          name: name,
+          email: email,
+          password: hashPassword
+      });
+      res.json({
+        state: true,
+        msg: "Register Success!"
+      });
     }catch(error){
         console.log(error);
     }

@@ -18,8 +18,20 @@ const Register = () => {
         email: email,
         password: password,
         confPassword: confPassword
-      });
-      navigate("/")
+      })
+        .then(res => {
+          console.log(res.data)
+          if (res.data.state) {
+            setMsg(res.data.msg)
+            //toast.success(res.data.msg)
+            setTimeout(() => {
+              navigate('/')
+            }, 2000)
+          } else {
+            setMsg(res.data.msg)
+            //toaster.notify(res.data.msg)
+          }
+        })
     }catch (e) {
       if (e.response){
         setMsg(e.response.data.msg)
