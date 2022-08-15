@@ -1,0 +1,27 @@
+GET http://localhost:5000/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsIm5hbWUiOiJBbmRpIEd1c3RhIiwiZW1haWwiOiJhbmRpQGdtYWlsLmNvbSIsImlhdCI6MTY2MDU1MTM3OCwiZXhwIjoxNjYwNTUxNDA4fQ.Lo_u9LAlPFmhbDb9MaZS_3NX_RtM6Kq_Lr23RZVhmmY
+###
+POST http://localhost:5000/users
+Content-Type: application/json
+
+{
+    "name": "Andi Gusta2",
+    "email": "andi2@gmail.com",
+    "password": "123456",
+    "confPassword": "123456sad"
+}
+
+###
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email": "andi@gmail.com",
+    "password": "123456"
+}
+
+###
+GET http://localhost:5000/token
+
+###
+DELETE http://localhost:5000/logout
